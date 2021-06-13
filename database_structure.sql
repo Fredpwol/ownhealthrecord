@@ -17,7 +17,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `petrk_ohrtest`
+CREATE DATABASE IF NOT EXISTS `medical_record`;
+USE `medical_record`;
 --
 
 -- --------------------------------------------------------
@@ -27,13 +28,32 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `doctors` (
-  `id` int(100) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `doctor_name` varbinary(1000) NOT NULL,
   `doctor_type` varbinary(1000) NOT NULL,
   `address` varbinary(1000) NOT NULL,
   `phone` varbinary(1000) NOT NULL,
   `email` varbinary(1000) NOT NULL,
   `treatment_period` varbinary(1000) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patient`
+--
+
+CREATE TABLE IF NOT EXISTS `patient` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `first_name` varbinary(1000) NOT NULL,
+  `last_name` varbinary(1000) NOT NULL,
+  `dob` varbinary(1000) NOT NULL,
+  `address` varbinary(1000) NOT NULL,
+  `blood_group` varbinary(1000) NOT NULL,
+  `phone` varbinary(1000) NOT NULL,
+  `email` varbinary(1000) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
 
@@ -55,14 +75,17 @@ CREATE TABLE IF NOT EXISTS `login_attempts` (
 --
 
 CREATE TABLE IF NOT EXISTS `medicalrecords` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(100) NOT NULL AUTO_INCREMENT,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `location` varbinary(50) NOT NULL,
-  `responsive_doctor` varbinary(50) NOT NULL,
+  `responsive_doctor` int(100) NOT NULL,
+  `patient` int(100) NOT NULL,
   `issue_description` varbinary(1000) NOT NULL,
   `diagnosis` varbinary(1000) NOT NULL,
   `prescribed_solution` varbinary(5000) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`responsive_doctor`) REFERENCES doctors(id),
+  FOREIGN KEY (`patient`) REFERENCES patient(id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
 
 -- --------------------------------------------------------
@@ -91,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `medicine` (
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(30) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` char(128) NOT NULL,
