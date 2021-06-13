@@ -29,9 +29,9 @@
  * These are the database login details
  */
 define("HOST", "localhost"); 			// The host you want to connect to. 
-define("USER", "User"); 			// The database username. 
-define("PASSWORD", "Pass"); 	// The database password. 
-define("DATABASE", "DB_Name");             // The database name.
+define("USER", "root"); 			// The database username. 
+define("PASSWORD", "1234"); 	// The database password. 
+define("DATABASE", "medical_record");             // The database name.
 
 /**
  * Who can register and what the default role will be
