@@ -78,7 +78,7 @@ sec_session_start();
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="#" class="simple-text">
+                <a href="#" class="simple-text" style="color: #EB5E28;">
                     <?php echo htmlentities($_SESSION['username']); ?> <br> Medical Record
                 </a>
             </div>
