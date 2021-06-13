@@ -83,12 +83,6 @@ sec_session_start();
             <ul class="nav">
                 <li>
                     <a href="#">
-                        <i class="ti-panel"></i>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
                         <i class="ti-user"></i>
                         <p>Patient</p>
                     </a>
@@ -106,33 +100,9 @@ sec_session_start();
                     </a>
                 </li>				
                 <li>
-                    <a href="fitness.php">
-                        <i class="far fa-heart"></i>
-                        <p>Fitness Data</p>
-                    </a>
-                </li>
-                <li>
                     <a href="medicine.php">
                         <i class="fas fa-pills"></i>
                         <p>Medicine</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="allergies.php">
-                        <i class="fas fa-allergies"></i>
-                        <p>Allergies</p>
-                    </a>
-                </li>				
-                <li>
-                    <a href="vaccination.php">
-                        <i class="fas fa-syringe"></i>
-                        <p>Vaccinations</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="sleep.php">
-                        <i class="fas fa-bed"></i>
-                        <p>Sleep Data</p>
                     </a>
                 </li>
                 <li class="active">
