@@ -14,13 +14,14 @@ if($mysqli === false){
 $location = $mysqli->real_escape_string($_REQUEST['location']);
 $responsive_doctor = $mysqli->real_escape_string($_REQUEST['responsive_doctor']);
 $issue_description = $mysqli->real_escape_string($_REQUEST['issue_description']);
+$patient = $mysqli->real_escape_string($_REQUEST['patient']);
 $diagnosis = $mysqli->real_escape_string($_REQUEST['diagnosis']);
 $prescribed_solution = $mysqli->real_escape_string($_REQUEST['prescribed_solution']);
 
 
 
 // Attempt insert query execution
-$sql = "INSERT INTO medicalrecords (location, responsive_doctor, issue_description, diagnosis, prescribed_solution) VALUES (AES_ENCRYPT ('$location','$SECRET'), AES_ENCRYPT('$responsive_doctor','$SECRET'), AES_ENCRYPT('$issue_description','$SECRET'), AES_ENCRYPT('$diagnosis','$SECRET'), AES_ENCRYPT('$prescribed_solution','$SECRET'))";
+$sql = "INSERT INTO medicalrecords (location, responsive_doctor, issue_description, diagnosis, prescribed_solution, patient) VALUES (AES_ENCRYPT ('$location','$SECRET'), $responsive_doctor, AES_ENCRYPT('$issue_description','$SECRET'), AES_ENCRYPT('$diagnosis','$SECRET'), AES_ENCRYPT('$prescribed_solution','$SECRET'), $patient)";
 if($mysqli->query($sql) === true){
     echo "Records inserted successfully.";
 	header('Location: ../medical/medical-record.php');
