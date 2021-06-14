@@ -106,3 +106,17 @@
 	text-decoration: none;
 	cursor: pointer;
   }
+
+  .table-row{
+	display: flex;
+	justify-content: space-evenly;
+  }
+
+  .table-col{
+	  flex: 1;
+	  align-self: flex-start;
+	  margin: 5px;
+  }
+  .data-text{
+	  color:rgb(99, 99, 99);
+  }
