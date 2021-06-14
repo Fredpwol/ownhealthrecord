@@ -84,8 +84,8 @@ CREATE TABLE IF NOT EXISTS `medicalrecords` (
   `diagnosis` varbinary(1000) NOT NULL,
   `prescribed_solution` varbinary(5000) NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (`responsive_doctor`) REFERENCES doctors(id),
-  FOREIGN KEY (`patient`) REFERENCES patient(id)
+  FOREIGN KEY (`responsive_doctor`) REFERENCES doctors(id) ON DELETE SET NULL,
+  FOREIGN KEY (`patient`) REFERENCES patient(id) ON DELETE SET NULL
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
 
 -- --------------------------------------------------------
