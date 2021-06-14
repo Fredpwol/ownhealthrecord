@@ -17,8 +17,9 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
-CREATE DATABASE IF NOT EXISTS `medical_record`;
-USE `medical_record`;
+
+CREATE DATABASE IF NOT EXISTS `heroku_29e28e82fd3b515`;
+USE `heroku_29e28e82fd3b515`;
 --
 
 -- --------------------------------------------------------
