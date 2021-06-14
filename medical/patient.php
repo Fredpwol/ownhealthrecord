@@ -257,7 +257,18 @@ sec_session_start();
                                              address, AES_DECRYPT(address, $SECRET), blood_group, AES_DECRYPT(blood_group, $SECRET), phone, AES_DECRYPT(phone, $SECRET),
                                              email, AES_DECRYPT(email, $SECRET) FROM patient"; //You don't need a ; like you do in SQL
                                             $result = mysqli_query($connection, $query);
+
+
                                             while ($row = mysqli_fetch_array($result)) {   //Creates a loop to loop through results
+                                                $p_id = $row['id'];
+                                                $record_query = "SELECT date,location, AES_DECRYPT(location, $SECRET),doctor_name, AES_DECRYPT(doctor_name, $SECRET),issue_description, AES_DECRYPT(issue_description, $SECRET),
+                                                diagnosis, AES_DECRYPT(diagnosis, $SECRET),prescribed_solution,AES_DECRYPT(prescribed_solution, $SECRET)
+                                                FROM medicalrecords mdr 
+                                                  LEFT JOIN doctors d ON mdr.responsive_doctor = d.id 
+                                                  LEFT JOIN patient p ON p.id = mdr.patient
+                                                  WHERE p.id = $p_id
+                                                  ";
+                                                $record_result = mysqli_query($connection, $record_query);
                                                 echo "<tbody id='".$row["id"]."'>";
                                                 echo "<tr>";
                                                 echo "<td>" . XSSdisarm($row["AES_DECRYPT(first_name, $SECRET)"]) . "</td>";
@@ -278,7 +289,29 @@ sec_session_start();
                                                     </h4>
                                                     <span class='close'>&times;</span>
                                                     </div>
-                                                    <p>Some text" .$row['id']." in the Modal..</p>
+                                                    <div class='content table-responsive table-full-width'>
+                                                    <div class='table table-hover'>
+                                                        <div class='table-row'>
+                                                            <h5 class='table-col'>Date</h5>
+                                                            <h5 class='table-col'>Location</h5>
+                                                            <h5 class='table-col'>Doctor treating</h5>
+                                                            <h5 class='table-col'>Patient complaints</h5>
+                                                            <h5 class='table-col'>Diagnosis</h5>
+                                                            <h5 class='table-col'>Treatment</h5>
+                                                        </div>";
+                                                        while ($rrow = mysqli_fetch_array($record_result)) {   //Creates a loop to loop through results
+                                                            echo "<div class='table-row'>";
+                                                            echo "<p class='table-col data-text'>" . XSSdisarm($rrow['date']) . "</p>";
+                                                            echo "<p class='table-col data-text'>" . XSSdisarm($rrow["AES_DECRYPT(location, $SECRET)"]) . "</p>";
+                                                            echo "<p class='table-col data-text'>" . XSSdisarm($rrow["AES_DECRYPT(doctor_name, $SECRET)"]) . "</p>";
+                                                            echo "<p class='table-col data-text'>" . XSSdisarm($rrow["AES_DECRYPT(issue_description, $SECRET)"]) . "</p>";
+                                                            echo "<p class='table-col data-text'>" . XSSdisarm($rrow["AES_DECRYPT(diagnosis, $SECRET)"]) . "</p>";
+                                                            echo "<p class='table-col data-text'>" . XSSdisarm($rrow["AES_DECRYPT(prescribed_solution, $SECRET)"]) . "</p>";
+                                                            echo "</div>";
+                                                        }
+                                                echo "
+                                                    </div>
+                                                    </div>
                                                 </div>
                                                 </div>";
                                             }
