@@ -32,7 +32,7 @@
 define("HOST", "us-cdbr-east-04.cleardb.com"); 			// The host you want to connect to. 
 define("USER", "bf14137abc0f77"); 			// The database username. 
 define("PASSWORD", "70c48c7a"); 	// The database password. 
-define("DATABASE", "medical_record");             // The database name.
+define("DATABASE", "heroku_29e28e82fd3b515");             // The database name.
 
 /**
  * Who can register and what the default role will be
