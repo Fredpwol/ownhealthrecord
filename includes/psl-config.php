@@ -28,9 +28,10 @@
 /**
  * These are the database login details
  */
-define("HOST", "localhost"); 			// The host you want to connect to. 
-define("USER", "root"); 			// The database username. 
-define("PASSWORD", "1234"); 	// The database password. 
+
+define("HOST", "us-cdbr-east-04.cleardb.com"); 			// The host you want to connect to. 
+define("USER", "bf14137abc0f77"); 			// The database username. 
+define("PASSWORD", "70c48c7a"); 	// The database password. 
 define("DATABASE", "medical_record");             // The database name.
 
 /**
